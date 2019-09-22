@@ -1,0 +1,33 @@
+.container-1 {
+    display: flex;
+}
+
+.container-2 {
+    display: flex;
+    flex-direction: column;
+}
+
+.box-1 {
+    flex: 1;
+}
+
+.box-2 {
+    flex: 3;
+}
+
+.box-3 {
+    flex: 1
+}
+
+.sub-box-1 {
+    flex: 1;
+}
+
+.sub-box-2 {
+    flex: 5;
+    background-color: orange;
+}
+
+.sub-box-3 {
+    flex: 1;
+}
