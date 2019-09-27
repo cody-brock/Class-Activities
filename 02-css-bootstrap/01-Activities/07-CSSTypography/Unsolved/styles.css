@@ -3,6 +3,10 @@
     font-family: 'Montserrat', sans-serif;
 }
 
+.bold:hover {
+    background-color: aqua;
+}
+
 .font-size-paragraph {
     font-size: 24px;
     font-family: 'Almarai', sans-serif;
@@ -11,6 +15,18 @@
 .line-height {
     line-height: 50px;
     font-family: 'Turret Road', cursive;
+}
+
+.linkylink a:focus {
+    font-size: 3rem;
+}
+
+.activelink a:active {
+    color: pink;
+}
+
+.hoverlink a:hover {
+    background-color: aquamarine;
 }
 
 
