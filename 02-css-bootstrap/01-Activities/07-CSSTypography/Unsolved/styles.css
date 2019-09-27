@@ -1,13 +1,16 @@
 .bold {
     font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .font-size-paragraph {
     font-size: 24px;
+    font-family: 'Almarai', sans-serif;
 }
 
 .line-height {
     line-height: 50px;
+    font-family: 'Turret Road', cursive;
 }
 
 
