@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Rock Paper Scissors Part 2
+  </title>
+</head>
+
+<body>
+
+  <div id="game">
+    <h1>Rock Paper Scissors Game</h1>
+    <div>Game Number: </div>
+
+  </div>
+
+  <script type="text/javascript">
+
+    // Creates an array that lists out all of the options (Rock, Paper, or Scissors).
+    var computerChoices = ["r", "p", "s"];
+    var userWins = 0;
+    var computerWins = 0;
+    var ties = 0;
+    var gameTotal = 0;
+    var userGuess;
+    var computerGuess;
+
+    // This function is run whenever the user presses a key.
+    document.onkeyup = function(event) {
+
+      // Determines which key was pressed.
+      var userGuess = event.key;
+
+      // Randomly chooses a choice from the options array. This is the Computer's guess.
+      var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+
+      // Alerts the key the user pressed (userGuess).
+      alert("User guess: " + userGuess);
+
+      // Alerts the Computer's guess.
+      alert("Computer guess: " + computerGuess);
+
+    
+
+    function rockPaperScissors(entry) {
+    if (userGuess === "r" || userGuess === "p" || userGuess === "s") {
+
+    // user wins here
+      if (userGuess === "r" && computerGuess === "s") {
+        userWins++
+      }
+      if (userGuess === "s" && computerGuess === "p") {
+        userWins++
+      }
+      if (userGuess === "p" && computerGuess === "r") {
+        userWins++
+      } 
+
+    // computer wins here
+      if (computerGuess === "r" && userGuess === "s") {
+        userWins++
+      }
+      if (computerGuess === "s" && userGuess === "p") {
+        userWins++
+      }
+      if (computerGuess === "p" && userGuess === "r") {
+        userWins++
+      } 
+
+    // ties here
+      if (userGuess === computerGuess) {
+        ties++
+      }
+
+    }
+    }
+    };
+
+    console.log("gameTotal", gameTotal);
+    console.log("userWins", userWins);
+    console.log("computerWins", computerWins);
+    console.log("ties", ties);
+
+
+  </script>
+
+</body>
+
+</html>
