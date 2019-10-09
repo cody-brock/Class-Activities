@@ -64,22 +64,48 @@
       // How would we log...
 
       // The car's make?
-      console.log(car.make);
+      // console.log(car.make);
 
       // The car's model?
-      console.log(car.model);
+      // console.log(car.model);
 
       // The car's mileage?
-      console.log(car.mileage);
+      // console.log(car.mileage);
 
       // How would we run the car's driveToWork method?
-      car.driveToWork();
+      // car.driveToWork();
 
       // How would we run the car's driveAroundWorld method?
-      car.driveAroundWorld();
+      // car.driveAroundWorld();
 
       // How would we run the getTuneUp method?
-      car.getTuneUp();
+      // car.getTuneUp();
+
+
+      function reWriteStats () {
+          console.log('make', car.make);
+          console.log('model', car.model);
+          console.log('mileage', car.mileage);
+          console.log('color', car.color);
+          console.log('isWorking', car.isWorking);
+        }
+
+
+      document.onkeyup = function(event) {
+        if (event.key === 'd') {
+          car.driveToWork();
+          reWriteStats();
+        } else if (event.key === 'w') {
+          car.driveToWork();
+          reWriteStats();
+        } else if (event.key === 't') {
+          car.getTuneUp();
+          reWriteStats();
+        } else if (event.key === 'h') {
+          car.honk;
+          reWriteStats();
+        }
+      }
 
     </script>
     
