@@ -88,28 +88,78 @@ $(document).ready(function() {
 
 // Your code here...
 
-firstNumTrue = true;
+
+var firstNumTrue = true;
+var firstNumber = "";
+var operator = "";
+var secondNumber = "";
+var result = "";
+var isCalculated = false
+
+function clear() {
+  firstNumTrue = true;
+  firstNumber = "";
+  operator = "";
+  secondNumber = "";
+  result = "";
+  isCalculated = false
+}
+
 
 $(".number").on("click", function() {
   if (firstNumTrue) {
-    var firstNumber = ($(this).attr("value"));
-    $("#first-number").append(firstNumber);
+    firstNumber += ($(this).attr("value"));
+    $("#first-number").text(firstNumber);
   } else {
-    var secondNumber = ($(this).attr("value"));
-    $("#second-number").append(secondNumber);
+    if (!isCalculated) {
+      secondNumber += ($(this).attr("value"));
+      $("#second-number").text(secondNumber);
+    }
   }
+  console.log(firstNumber)
 })
 
 $(".operator").on("click", function() {
   firstNumTrue = false;
-  var operator = ($(this).attr("value"));
-  $("#operator").append(operatorObj[operator]);
+  operator = ($(this).attr("value"));
+  $("#operator").text(operatorObj[operator]);
 })
 
-$(".equal").on("click", function {
-  console.log()
+$(".equal").on("click", function() {
+  if (!firstNumber || !secondNumber || !operator) {
+    return false;
+  }
+
+  var first = parseInt($("#first-number").text());
+  var ops = $("#operator").text();
+  var second = parseInt($("#second-number").text());
+  
+  console.log(first, ops, second);
+
+  switch(ops) {
+    case '+':
+      $("#result").text(first + second);
+      break;
+    case '-':
+      $("#result").text(first - second);
+      break;
+    case 'x':
+      $("#result").text(first * second);
+      break;
+    case '÷':
+      $("#result").text(first / second);
+      break;
+    case '^': 
+      $("#result").text(Math.pow(first, second));
+      break;
+  }
+  isCalculated = true;
 })
 
+$(".clear").on("click", function() {
+  clear();
+  $("#first-number, #operator, #second-number, #result").empty();
+})
 
 });
 
