@@ -77,90 +77,70 @@
 
 $(document).ready(function() {
 
- var operatorObj = {
-   plus: "+",
-   minus: "-",
-   times: "x",
-   divide: "÷",
-   power: "^",
-   equals: "=",
- }
-
 // Your code here...
+  var firstNumber = '';
+  var secondNumber = '';
+  var operator = '';
+  var result = '';
+  var isCalculated = false;
 
+  function clearCalc() {
+    firstNumber = '';
+    secondNumber = '';
+    operator = '';
+    result = '';
+    isCalculated = false;
 
-var firstNumTrue = true;
-var firstNumber = "";
-var operator = "";
-var secondNumber = "";
-var result = "";
-var isCalculated = false
+    $("#first-number, #second-number, #operator, #result").empty();
+  }
 
-function clear() {
-  firstNumTrue = true;
-  firstNumber = "";
-  operator = "";
-  secondNumber = "";
-  result = "";
-  isCalculated = false
-}
+  $("#button-clear").on("click", function() {
+    clearCalc();
+  });
 
-
-$(".number").on("click", function() {
-  if (firstNumTrue) {
-    firstNumber += ($(this).attr("value"));
-    $("#first-number").text(firstNumber);
-  } else {
-    if (!isCalculated) {
-      secondNumber += ($(this).attr("value"));
+  $(".number").on('click', function() {
+    // a number has been clicked.  Is it the first number or the second number??
+    if (isCalculated) {
+      return;
+    }
+    if (operator === '') {
+      firstNumber += $(this).val();
+      $("#first-number").text(firstNumber);
+    } else {
+      secondNumber += $(this).val();
       $("#second-number").text(secondNumber);
     }
-  }
-  console.log(firstNumber)
-})
+    console.log('firstNumber', firstNumber, 'secondNum', secondNumber, 'operator', operator);
+  });
 
-$(".operator").on("click", function() {
-  firstNumTrue = false;
-  operator = ($(this).attr("value"));
-  $("#operator").text(operatorObj[operator]);
-})
+  $(".operator").on("click", function() {
+    operator = $(this).val();
+    $("#operator").text($(this).text());
+    console.log('operator', operator);
+  })
 
-$(".equal").on("click", function() {
-  if (!firstNumber || !secondNumber || !operator) {
-    return false;
-  }
+  $("#button-equal").on("click", function() {
+    if (!firstNumber || !secondNumber || !operator) {
+      return false;
+    }
 
-  var first = parseInt($("#first-number").text());
-  var ops = $("#operator").text();
-  var second = parseInt($("#second-number").text());
-  
-  console.log(first, ops, second);
+    if (operator === 'plus') {
+      result = Number(firstNumber) + Number(secondNumber);
+    } else if (operator === 'minus') {
+      result = Number(firstNumber) - Number(secondNumber);
+    } else if (operator === 'times') {
+      result = Number(firstNumber) * Number(secondNumber);
+    } else if (operator === 'divide') {
+      result = Number(firstNumber) / Number(secondNumber);
+    } else if (operator === 'power') {
+      $("#result").text(Math.pow(Number(firstNumber), Number(secondNumber)));
+    }
 
-  switch(ops) {
-    case '+':
-      $("#result").text(first + second);
-      break;
-    case '-':
-      $("#result").text(first - second);
-      break;
-    case 'x':
-      $("#result").text(first * second);
-      break;
-    case '÷':
-      $("#result").text(first / second);
-      break;
-    case '^': 
-      $("#result").text(Math.pow(first, second));
-      break;
-  }
-  result
-  isCalculated = true;
-})
+    console.log('result', result);
+    $("#result").text(result);
+    isCalculated = true;
+  });
 
-$(".clear").on("click", function() {
-  clear();
-  $("#first-number, #operator, #second-number, #result").empty();
-})
 
 });
 
