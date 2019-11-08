@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <div class="jumbotron">
+            <h1 class="display-4 text-center">Employee Data Management</h1>
+            <p class="lead text-center">A Comprehensive Directory of Employee Billable Hours</p>
+        </div>
+
+
+     
+        <div class="container">
+
+            <div class="card">
+                <div class="card-header">
+                    Current Employees
+                </div>
+
+                <div class="card-body">
+                
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                            <th scope="col">Employee Name</th>
+                            <th scope="col">Role</th>
+                            <th scope="col">Start Date</th>
+                            <th scope="col">Months Worked</th>
+                            <th scope="col">Montly Rate ($)</th>
+                            <th scope="col">Total Billed ($)</th>
+                            </tr>
+                        </thead>
+                        <tbody id="table">
+                            <!-- <tr>
+                            <th scope="row">1</th>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>@mdo</td>
+                            <td>@mdo</td>
+                            <td>@mdo</td>
+                            </tr>
+                            <tr>
+                            <th scope="row">2</th>
+                            <td>Jacob</td>
+                            <td>Thornton</td>
+                            <td>@fat</td>
+                            <td>@mdo</td>
+                            <td>@mdo</td>
+                            </tr>
+                            <tr>
+                            <th scope="row">3</th>
+                            <td colspan="2">Larry the Bird</td>
+                            <td>@twitter</td>
+                            <td>@mdo</td>
+                            <td>@mdo</td>
+                            </tr> -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    Add Employee
+                </div>
+                
+                <form>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Employee Name</label>
+                        <input type="email" class="form-control" id="employee-name" aria-describedby="emailHelp" placeholder="Enter Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Role</label>
+                        <input type="text" class="form-control" id="role" placeholder="Enter Role">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Start Date (MM/DD/YYYY)</label>
+                        <input type="text" class="form-control" id="start-date" placeholder="MM/DD/YYYY">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Montly Rate</label>
+                        <input type="text" class="form-control" id="monthly-rate" placeholder="Enter Monthly Rate">
+                    </div>
+                    <button type="submit" class="btn btn-primary" id="submit">Submit</button>
+                </form>
+            </div>
+        </div>
+
+
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-app.js"></script>
+
+        <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+        <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-analytics.js"></script>
+        <!-- realtime file -->
+        <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-database.js"></script>
+
+        <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyAZCxdGiWviLUZNkY0ZXGf-64GmWCWaplI",
+            authDomain: "employee-data-management-e2a14.firebaseapp.com",
+            databaseURL: "https://employee-data-management-e2a14.firebaseio.com",
+            projectId: "employee-data-management-e2a14",
+            storageBucket: "employee-data-management-e2a14.appspot.com",
+            messagingSenderId: "184019893294",
+            appId: "1:184019893294:web:d7192cb1d379495ed133bf",
+            measurementId: "G-DZGNNQ8R3W"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        firebase.analytics();
+        </script>
+        
+        <!-- bootsrap and jquery files -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        
+
+        <!-- my js file -->
+        <script src="jsfile.js" async defer></script>
+    </body>
+</html>
