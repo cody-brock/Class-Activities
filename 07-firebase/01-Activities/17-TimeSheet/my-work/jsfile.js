@@ -33,10 +33,10 @@ database.ref().on("child_added", function(snapshot) {
     console.log(snapshot.val().monthlyRate);
     console.log(snapshot.val().dateAdded)
 
-    var date = new Date(snapshot.val().startDate);
-    console.log(date);
-    var monthsWorked = new Date(Date.now() - date);
-    console.log(monthsWorked);
+    // var date = new Date(snapshot.val().startDate);
+    // console.log(date);
+    // var monthsWorked = new Date(Date.now() - date);
+    // console.log(monthsWorked);
 
     var row = $("<tr>");
     row.append($("<td>").text(snapshot.val().name))
