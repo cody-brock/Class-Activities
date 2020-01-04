@@ -11,7 +11,7 @@ var connection = mysql.createConnection({
   user: "root",
 
   // Your password
-  password: "",
+  password: "root",
   database: "top_songsDB"
 });
 
@@ -67,11 +67,11 @@ function artistSearch() {
       message: "What artist would you like to search for?"
     })
     .then(function(answer) {
-      var query = ""; //TODO
-      connection.query(query, {}, function (err, res) { //TODO
+      var query = "SELECT * from Top5000 WHERE artist = ?"; 
+      connection.query(query, {artist: answer.artist}, function (err, res) { //TODO
         if (err) throw err;
         for (var i = 0; i < res.length; i++) {
-          console.log("Position: " + res[i].position + " || Song: " + res[i].song + " || Year: " + res[i].year);
+          console.log("Position: " + res[i].rank + " || Song: " + res[i].songTitle + " || Year: " + res[i].year);
         }
         runSearch();
       });
@@ -79,8 +79,9 @@ function artistSearch() {
 }
 
 function multiSearch() {
-  var query = ""; //TODO
+  var query = "SELECT artist, from top_songs GROUP BY artist HAVING  count (*) > 1"; //TODO
   connection.query(query, function(err, res) {
+    console.log(res)
     if (err) throw err;
     for (var i = 0; i < res.length; i++) {
       console.log(res[i].artist);
@@ -116,15 +117,15 @@ function rangeSearch() {
       }
     ])
     .then(function(answer) {
-      var query = ""; //TODO
-      connection.query(query, [], function (err, res) { //TODO
+      var query = "SELECT * from Top5000 WHERE rank BETWEEN ? and ?"; //TODO
+      connection.query(query, [answer.start, answer.end], function (err, res) { //TODO
         if (err) throw err;
         for (var i = 0; i < res.length; i++) {
           console.log(
             "Position: " +
-              res[i].position +
+              res[i].rank +
               " || Song: " +
-              res[i].song +
+              res[i].songTitle +
               " || Artist: " +
               res[i].artist +
               " || Year: " +

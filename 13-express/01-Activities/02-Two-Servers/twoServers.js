@@ -1,6 +1,6 @@
 const http = require('http');
 
-const PORT1 = 7000;
+const PORT1 = 10;
 const PORT2 = 7050;
 
 function handleRequest1(request, response) {
