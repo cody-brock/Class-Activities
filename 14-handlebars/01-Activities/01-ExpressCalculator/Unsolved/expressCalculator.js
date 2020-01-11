@@ -52,7 +52,7 @@ app.get("/:operation/:num1/:num2", function(req, res) {
   }
 
   // We return the result back to the user in the form of a string
-  res.send(result.toString());
+  res.send(`<h1>${result.toString()}</h1>`);
 
 });
 
