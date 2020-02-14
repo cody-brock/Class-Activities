@@ -6,7 +6,7 @@ var cheerio = require("cheerio");
 var axios = require("axios");
 
 // Make a request via axios to grab the HTML body from the site of your choice
-axios.get("https://www.nba.com/").then(function(response) {
+axios.get("https://www.marketwatch.com/investing/stocks").then(function(response) {
 
   // Load the HTML into cheerio and save it to a variable
   // '$' becomes a shorthand for cheerio's selector commands, much like jQuery's '$'
@@ -18,10 +18,10 @@ axios.get("https://www.nba.com/").then(function(response) {
   // Select each element in the HTML body from which you want information.
   // NOTE: Cheerio selectors function similarly to jQuery's selectors,
   // but be sure to visit the package's npm page to see how it works
-  $("a.content_list--item").each(function(i, element) {
+  $("h3.article__headline").each(function(i, element) {
 
-    var title = $(element).find("h5.content_list--title").text();
-    var link = $(element).attr("href");
+    var title = $(element).find("a.link").text();
+    var link = $(element).find("a.link").attr("href");
 
     // Save these results in an object that we'll push into the results array we defined earlier
     results.push({
