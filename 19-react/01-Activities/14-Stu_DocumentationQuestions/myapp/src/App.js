@@ -1,41 +1,30 @@
-import React from "react";
-import List from "./components/List";
+import React, { useState }from "react";
+import FriendCard from "./components/FriendCard";
+import Wrapper from "./components/Wrapper";
+import initialFriends from "./friends.json";
+import "./App.css";
 
-const groceries = [
-  {
-    id: 1,
-    name: "Milk",
-    purchased: true
-  },
-  {
-    id: 2,
-    name: "Eggs",
-    purchased: true
-  },
-  {
-    id: 3,
-    name: "Cheese",
-    purchased: false
-  },
-  {
-    id: 4,
-    name: "Cake Mix",
-    purchased: false
-  },
-  {
-    id: 5,
-    name: "Carrots",
-    purchased: false
-  },
-  {
-    id: 6,
-    name: "Juice",
-    purchased: true
+const App = () => {
+  const [friends, setFriends] = useState(initialFriends)
+
+  const handleRemoveFriend = id => {
+    const newListOfFriends = friends.filter(friend => friend.id !== id);
+    setFriends(newListOfFriends);
   }
-];
 
-function App() {
-  return <List groceries={groceries} />;
+  return(
+    <Wrapper>
+      <h1 className="title">Friends List</h1>
+      {friends.map(friend => <FriendCard
+        name={friend.name}
+        image={friend.image}
+        occupation={friend.occupation}
+        location={friend.location}
+        key={friend.id}
+        removeFriend={() => handleRemoveFriend(friend.id)}
+      />)}
+    </Wrapper>
+  )
 }
 
 export default App;
