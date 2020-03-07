@@ -2,9 +2,6 @@ import React from "react";
 import "./style.css";
 
 function FriendCard(props) {
-
-
-
   return (
     <div className="card">
       <div className="img-container">
@@ -23,7 +20,7 @@ function FriendCard(props) {
           </li>
         </ul>
       </div>
-      <span className="remove" onClick={props.removeFriend}>𝘅</span>
+      <span className="remove" onClick={props.remove}>𝘅</span>
     </div>
   );
 }
